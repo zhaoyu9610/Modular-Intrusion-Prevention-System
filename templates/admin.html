@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form action ="{{url_for('admin')}}" method="POST">
+
+
+        <section id="Everything">
+            <h1> Day Day Ban Admin </h1>
+
+            <h3>Admin Username : &nbsp; <input type = "text" class="input" value="" placeholder = "uesrname" name="usrn" required></h3>
+            <h3>Password : &nbsp; <input type = "password" class="input" value  = "" placeholder = "password" name = "pswd" required></h3>
+
+            <input type = "submit" class="button" value="LOG IN">
+        </section>
+    </form>
+
+{% endblock %}

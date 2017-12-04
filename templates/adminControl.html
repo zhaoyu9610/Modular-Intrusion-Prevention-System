@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<script type="text/javascript">
+    function updatexyz(){
+	xyz = document.getElementById("xyz");
+	console.log(xyz.hasChildNodes());
+	console.log(xyz.lastChild);
+	if(!xyz.hasChildNodes()){
+	var x = document.createElement("input");
+	x.required = true;
+	x.type = "number";
+	x.name = "x";
+	var y = document.createElement("input");
+	y.required = true;
+	y.type = "number";
+	y.name = "y";
+	var z = document.createElement("input");
+	z.required = true;
+	z.type = "number";
+	z.name = "z";	
+	xyz.appendChild(x);	
+    	xyz.appendChild(document.createTextNode(" requests in "));
+	xyz.appendChild(y);
+	xyz.appendChild(document.createTextNode(" minutes, blocked for "));
+	xyz.appendChild(z);
+	xyz.appendChild(document.createTextNode(" minutes"));}
+	else{
+            while(xyz.hasChildNodes()){
+            	xyz.removeChild(xyz.lastChild);
+	     }
+        }
+	
+    }
+
+
+    function addControl(){
+        var input = document.createElement("input");
+        input.type = "text";
+	input.required = true;
+        var name = "ips" + Math.random().toString()
+        while(document.getElementById(name) != null)
+            name = "ips" + Math.random().toString()
+        input.name = name;
+        input.onKeyUp = function(){
+            var input = document.getElementById('')
+            var validRegex = '^(?!0)(1?\d?\d|2[0-4]\d|25[0-9])(\.|$){4}';
+            //if(validRegex.test(this.value))
+
+        }
+        //input.className = "";
+
+        var font = document.createElement("h3");
+        var node = document.createTextNode("IP: ");
+        font.appendChild(node);
+        font.appendChild(input);
+
+        var rule = document.createElement("li");
+
+        var button2 = document.createElement("button");
+	button2.type = 'button';
+        button2.append(document.createTextNode("DELETE"));
+        button2.onclick = function(){
+		this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+    };
+        font.appendChild(button2);
+        rule.appendChild(font);
+        document.getElementById("bannedip").appendChild(rule);
+    }
+
+</script>
+        <form action = "{{url_for('adminControl')}}", method="POST">
+            <div>
+                <h1>Current threshold</h1>
+                <h3>{{content.x}} requests in {{content.y}} minutes, blocked for {{content.z}} minutes</h3>
+		<h3 id="xyz"></h3>
+		<button id = "buttonxyz" class = "button" type = "button" onclick = "updatexyz()"><h5>Toggle To Update XYZ</h5></button>
+                <br>
+                <h1>Admin Control</h1>
+                <h3>Blacklists:</h3>
+                <ol class="blacklists">
+                {% for blacklist in content.blacklists %}
+                    <li>
+                        <h3>{{blacklist}}<input type="checkbox" name="removedips{{blacklist}}" value = {{blacklist}}></h3>
+                    </li>
+                {% endfor %}
+                </ol>
+                <br>
+                <h3>Add ip control:</h3>
+                <ul id="bannedip">
+                </ul>
+                <button class= "button" type = "button" onclick = "addControl()"><h5>Add New Rule</h5></button>
+            </div>
+            <input type = "submit" class="button" style="display:block;width:100%" value="UPDATE">
+        </form>
+
+        <h5 style="text-align:center;">&copy; Copyright 2017 by Day Day Up.</h5>
+{% endblock %}

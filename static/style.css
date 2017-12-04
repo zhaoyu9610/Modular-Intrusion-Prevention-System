@@ -1,0 +1,58 @@
+        @import url("http://fonts.googleapis.com/css?family=Orbitron");
+
+        .page{
+            background-image: url("http://www.publicdomainpictures.net/pictures/130000/velka/gray-haze-background.jpg");
+            padding: 10% 5%;
+        }
+
+        section{
+            text-align:center;
+            position:relative;
+            display:block;
+        }
+
+        h1, h3{
+            vertical-align: baseline;
+            font-family: "Orbitron", sans-serif;
+        }
+
+        button, .button{
+            transition: background-color 0.2s;
+            font-size: .75em;
+            background-color: rgba(66, 217, 244, 0.10);
+            cursor:pointer;
+            display:inline-block;
+            border-shadow: 0,0,0,3px, rgba(66, 217, 244, 0.10);
+            border-radius:20px;
+            margin:0 0.3em 0.3em 0;
+            outline: 0;
+
+        }
+        .button:hover{
+            background-color: rgba(66, 217, 244, 0.30);
+        }
+
+        form div{
+            position:relative;
+            background: #FFFFFF;
+            text-align:center;
+            box-shadow: 0 0 2px 5px rgba(0, 0, 0, 0.2);
+            max-width: 300px
+            margin: auto 200px;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        form input{
+            font-family: "Orbitron", sans-serif;
+            outline:0;
+            word-wrap: break-word;
+            width: 30%;
+            padding: 10px;
+            display:inline-block;
+        }
+
+        .input{
+            border-radius: 10px;
+            background-color: rgba(107, 112, 119, 0.30);
+        }

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form action ="{{url_for('signup')}}" method="POST">
+
+
+        <section id="Everything">
+            <h1> Day Day Ban </h1>
+
+            <h3>Username : &nbsp; <input type = "text" class="input" value="" placeholder = "uesrname" name="usrn"></h3>
+            <h3>Password : &nbsp; <input type = "password" class="input" value  = "" placeholder = "password" name = "pswd"></h3>
+
+            <input type = "submit" class="button" value="SIGN UP">
+        </section>
+    </form>
+
+{% endblock %}
